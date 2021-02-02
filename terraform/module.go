@@ -129,37 +129,37 @@ func NewModule(fns ...SectionFn) Module {
 }
 
 // HasHeader indicates if the module has header.
-func (m module) HasHeader() bool {
+func (m *module) HasHeader() bool {
 	return len(m.Header) > 0
 }
 
 // HasInputs indicates if the module has inputs.
-func (m module) HasInputs() bool {
+func (m *module) HasInputs() bool {
 	return len(m.Inputs) > 0
 }
 
 // HasOutputs indicates if the module has outputs.
-func (m module) HasOutputs() bool {
+func (m *module) HasOutputs() bool {
 	return len(m.Outputs) > 0
 }
 
 // HasProviders indicates if the module has providers.
-func (m module) HasProviders() bool {
+func (m *module) HasProviders() bool {
 	return len(m.Providers) > 0
 }
 
 // HasRequirements indicates if the module has requirements.
-func (m module) HasRequirements() bool {
+func (m *module) HasRequirements() bool {
 	return len(m.Requirements) > 0
 }
 
 // HasResources indicates if the module has resources.
-func (m module) HasResources() bool {
+func (m *module) HasResources() bool {
 	return len(m.Resources) > 0
 }
 
 func init() {
-	gob.Register(module{})
+	gob.Register(&module{})
 	gob.Register([]interface{}{})
 	gob.Register(map[string]interface{}{})
 }
