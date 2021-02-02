@@ -22,6 +22,7 @@ can uncomment the below line to indicate which issue your PR fixes, for example
 I have:
 
 - [ ] Read and followed terraform-docs' [contribution process].
+- [ ] All tests pass when I run `make test`.
 
 ### How has this code been tested
 
