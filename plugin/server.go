@@ -73,6 +73,7 @@ func (s *server) Version(args interface{}, resp *string) error {
 
 // Execute returns the generated output.
 func (s *server) Execute(args ExecuteArgs, resp *string) error {
-	*resp, _ = s.impl.Execute(args)
-	return nil
+	r, err := s.impl.Execute(args)
+	*resp = r
+	return err
 }
