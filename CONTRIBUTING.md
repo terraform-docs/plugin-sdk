@@ -4,11 +4,15 @@ Welcome, and thank you for considering contributing to terraform-docs Plugin
 SDK. We encourage you to help out by raising issues, improving documentation,
 fixing bugs, or adding new features
 
+If you're interested in contributing please start by reading this document. If
+you have any questions at all, or don't know where to start, please reach out to
+us on [Slack].
+
 ## Development Requirements
 
-- [Go](https://golang.org/) 1.15+
-- [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)
-- [golangci-lint](https://github.com/golangci/golangci-lint)
+- [Go] 1.15+
+- [goimports]
+- [golangci-lint]
 
 You can install all the required tools with `make tools` or individually with
 their own make targets. (please refer to Makefile for more details)
@@ -68,6 +72,10 @@ Thank you for reading through our contributing guide! We appreciate you taking
 the time to ensure your contributions are high quality and easy for our community
 to review and accept.
 
+[Slack]: https://terraform-docs.slack.com/
+[Go]: https://golang.org/
+[goimports]: https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+[golangci-lint]: https://github.com/golangci/golangci-lint
 [good git commit hygiene]: https://www.futurelearn.com/info/blog/telling-stories-with-your-git-history
 [Developer Certificate of Origin]: https://github.com/apps/dco
 [gofmt]: https://blog.golang.org/go-fmt-your-code
