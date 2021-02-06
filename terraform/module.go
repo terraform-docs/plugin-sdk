@@ -22,10 +22,11 @@ import (
 
 // Module represents a Terraform module. It consists of
 //
-// - Header       ('header' json key):    Module header found in shape of multi line comments at the beginning of 'main.tf'
-// - Inputs       ('inputs' json key):    List of input 'variables' extracted from the Terraform module .tf files
-// - Outputs      ('outputs' json key):   List of 'outputs' extracted from Terraform module .tf files
-// - Providers    ('providers' json key): List of 'providers' extracted from resources used in Terraform module
+// - Header       ('header' json key):        Module header found in shape of multi line comments at the beginning of 'main.tf'
+// - Inputs       ('inputs' json key):        List of input 'variables' extracted from the Terraform module .tf files
+// - ModuleCalls  ('modules' json key):       List of 'modules' extracted from the Terraform module .tf files
+// - Outputs      ('outputs' json key):       List of 'outputs' extracted from Terraform module .tf files
+// - Providers    ('providers' json key):     List of 'providers' extracted from resources used in Terraform module
 // - Requirements ('requirements' json key):  List of 'requirements' extracted from the Terraform module .tf files
 // - Resources    ('resources' json key):     List of 'resources' extracted from the Terraform module .tf files
 type Module interface {
@@ -34,6 +35,9 @@ type Module interface {
 
 	// HasInputs indicates if the module has inputs.
 	HasInputs() bool
+
+	// HasModuleCalls indicates if the module has inputs.
+	HasModuleCalls() bool
 
 	// HasOutputs indicates if the module has outputs.
 	HasOutputs() bool
@@ -59,6 +63,13 @@ func WithHeader(h string) SectionFn {
 func WithInputs(i []*Input) SectionFn {
 	return func(m *module) {
 		m.Inputs = i
+	}
+}
+
+// WithModuleCalls adds Modulecalls to Module.
+func WithModuleCalls(mc []*ModuleCall) SectionFn {
+	return func(m *module) {
+		m.ModuleCalls = mc
 	}
 }
 
@@ -107,6 +118,7 @@ func WithOptionalInputs(oi []*Input) SectionFn {
 type module struct {
 	Header       string
 	Inputs       []*Input
+	ModuleCalls  []*ModuleCall
 	Outputs      []*Output
 	Providers    []*Provider
 	Requirements []*Requirement
@@ -136,6 +148,11 @@ func (m *module) HasHeader() bool {
 // HasInputs indicates if the module has inputs.
 func (m *module) HasInputs() bool {
 	return len(m.Inputs) > 0
+}
+
+// HasModuleCalls indicates if the module has modulecalls.
+func (m *module) HasModuleCalls() bool {
+	return len(m.ModuleCalls) > 0
 }
 
 // HasOutputs indicates if the module has outputs.

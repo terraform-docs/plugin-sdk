@@ -60,6 +60,12 @@ type Settings struct {
 	// scope: Global
 	ShowInputs bool
 
+	// ShowModuleCalls show "ModuleCalls" information
+	//
+	// default: true
+	// scope: Global
+	ShowModuleCalls bool
+
 	// ShowOutputs show "Outputs" information
 	//
 	// default: true
