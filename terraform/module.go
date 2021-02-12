@@ -22,7 +22,8 @@ import (
 
 // Module represents a Terraform module. It consists of
 //
-// - Header       ('header' json key):        Module header found in shape of multi line comments at the beginning of 'main.tf'
+// - Header       ('header' json key):        Module header found in shape of multi line '*.tf' comments or an entire file
+// - Footer       ('footer' json key):        Module footer found in shape of multi line '*.tf' comments or an entire file
 // - Inputs       ('inputs' json key):        List of input 'variables' extracted from the Terraform module .tf files
 // - ModuleCalls  ('modules' json key):       List of 'modules' extracted from the Terraform module .tf files
 // - Outputs      ('outputs' json key):       List of 'outputs' extracted from Terraform module .tf files
@@ -32,6 +33,9 @@ import (
 type Module interface {
 	// HasHeader indicates if the module has header.
 	HasHeader() bool
+
+	// HasFooter indicates if the module has footer.
+	HasFooter() bool
 
 	// HasInputs indicates if the module has inputs.
 	HasInputs() bool
@@ -56,6 +60,13 @@ type Module interface {
 func WithHeader(h string) SectionFn {
 	return func(m *module) {
 		m.Header = h
+	}
+}
+
+// WithFooter adds footer to Module.
+func WithFooter(h string) SectionFn {
+	return func(m *module) {
+		m.Footer = h
 	}
 }
 
@@ -117,6 +128,7 @@ func WithOptionalInputs(oi []*Input) SectionFn {
 
 type module struct {
 	Header       string
+	Footer       string
 	Inputs       []*Input
 	ModuleCalls  []*ModuleCall
 	Outputs      []*Output
@@ -143,6 +155,11 @@ func NewModule(fns ...SectionFn) Module {
 // HasHeader indicates if the module has header.
 func (m *module) HasHeader() bool {
 	return len(m.Header) > 0
+}
+
+// HasFoot indicates if the module has footer.
+func (m *module) HasFooter() bool {
+	return len(m.Footer) > 0
 }
 
 // HasInputs indicates if the module has inputs.

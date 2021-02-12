@@ -54,6 +54,12 @@ type Settings struct {
 	// scope: Global
 	ShowHeader bool
 
+	// ShowFooter show "footer" module information
+	//
+	// default: false
+	// scope: Global
+	ShowFooter bool
+
 	// ShowInputs show "Inputs" information
 	//
 	// default: true
