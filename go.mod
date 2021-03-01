@@ -1,6 +1,6 @@
 module github.com/terraform-docs/plugin-sdk
 
-go 1.15
+go 1.16
 
 require (
 	github.com/hashicorp/go-hclog v0.15.0
