@@ -189,7 +189,7 @@ func normalize(s string) string {
 func sanitizeName(name string, settings *print.Settings) string {
 	if settings.EscapeCharacters {
 		// Escape underscore
-		name = strings.Replace(name, "_", "\\_", -1)
+		name = strings.ReplaceAll(name, "_", "\\_")
 	}
 	return name
 }

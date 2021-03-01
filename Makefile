@@ -12,7 +12,7 @@ GO_PACKAGE_FILES    := $(shell go list ./... | grep -v vendor/ | sed 's|$(PROJEC
 GOIMPORTS_LOCAL_ARG := -local $(PROJECT_REPO)
 
 # Binary versions
-GOLANGCI_VERSION := v1.23.7
+GOLANGCI_VERSION := v1.37.0
 
 .PHONY: all
 all: clean verify checkfmt lint test
