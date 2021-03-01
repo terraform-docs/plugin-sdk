@@ -30,7 +30,7 @@ type Settings struct {
 	// scope: Asciidoc, Markdown
 	IndentLevel int
 
-	// OutputValues ailrghaekrgj
+	// OutputValues extract and show Output values from Terraform module output
 	//
 	// default: false
 	// scope: Global
@@ -41,6 +41,12 @@ type Settings struct {
 	// default: true
 	// scope: Pretty
 	ShowColor bool
+
+	// ShowDefault show "Default" column when generating Markdown
+	//
+	// default: true
+	// scope: Asciidoc, Markdown
+	ShowDefault bool
 
 	// ShowHeader show "Header" module information
 	//
@@ -81,13 +87,13 @@ type Settings struct {
 	// ShowRequired show "Required" column when generating Markdown
 	//
 	// default: true
-	// scope: Markdown
+	// scope: Asciidoc, Markdown
 	ShowRequired bool
 
 	// ShowSensitivity show "Sensitive" column when generating Markdown
 	//
 	// default: true
-	// scope: Markdown
+	// scope: Asciidoc, Markdown
 	ShowSensitivity bool
 
 	// ShowRequirements show "Requirements" section
