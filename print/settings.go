@@ -107,4 +107,10 @@ type Settings struct {
 	// default: true
 	// scope: Global
 	ShowResources bool
+
+	// ShowType show "Type" column when generating Markdown or AsciiDoc
+	//
+	// default: true
+	// scope: Asciidoc, Markdown
+	ShowType bool
 }
