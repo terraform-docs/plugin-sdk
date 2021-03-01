@@ -24,13 +24,13 @@ type Settings struct {
 	// scope: Markdown
 	EscapeCharacters bool
 
-	// IndentLevel control the indentation of AsciiDoc and Markdown headers [available: 1, 2, 3, 4, 5]
+	// IndentLevel control the indentation of headers [available: 1, 2, 3, 4, 5]
 	//
 	// default: 2
 	// scope: Asciidoc, Markdown
 	IndentLevel int
 
-	// OutputValues ailrghaekrgj
+	// OutputValues extract and show Output values from Terraform module output
 	//
 	// default: false
 	// scope: Global
@@ -41,6 +41,12 @@ type Settings struct {
 	// default: true
 	// scope: Pretty
 	ShowColor bool
+
+	// ShowDefault show "Default" column
+	//
+	// default: true
+	// scope: Asciidoc, Markdown
+	ShowDefault bool
 
 	// ShowHeader show "Header" module information
 	//
@@ -78,16 +84,16 @@ type Settings struct {
 	// scope: Global
 	ShowProviders bool
 
-	// ShowRequired show "Required" column when generating Markdown
+	// ShowRequired show "Required" column
 	//
 	// default: true
-	// scope: Markdown
+	// scope: Asciidoc, Markdown
 	ShowRequired bool
 
-	// ShowSensitivity show "Sensitive" column when generating Markdown
+	// ShowSensitivity show "Sensitive" column
 	//
 	// default: true
-	// scope: Markdown
+	// scope: Asciidoc, Markdown
 	ShowSensitivity bool
 
 	// ShowRequirements show "Requirements" section
@@ -101,4 +107,10 @@ type Settings struct {
 	// default: true
 	// scope: Global
 	ShowResources bool
+
+	// ShowType show "Type" column
+	//
+	// default: true
+	// scope: Asciidoc, Markdown
+	ShowType bool
 }
