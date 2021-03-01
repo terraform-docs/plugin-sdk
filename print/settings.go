@@ -24,12 +24,6 @@ type Settings struct {
 	// scope: Markdown
 	EscapeCharacters bool
 
-	// EscapePipe escapes pipe character in Markdown
-	//
-	// default: true
-	// scope: Markdown
-	EscapePipe bool
-
 	// IndentLevel control the indentation of AsciiDoc and Markdown headers [available: 1, 2, 3, 4, 5]
 	//
 	// default: 2
@@ -107,22 +101,4 @@ type Settings struct {
 	// default: true
 	// scope: Global
 	ShowResources bool
-
-	// SortByName sorted rendering of inputs and outputs
-	//
-	// default: true
-	// scope: Global
-	SortByName bool
-
-	// SortByRequired sort items (inputs, providers) by name and prints required ones first
-	//
-	// default: false
-	// scope: Global
-	SortByRequired bool
-
-	// SortByType sort items (inputs, outputs) by type alphabetically
-	//
-	// default: false
-	// scope: Global
-	SortByType bool
 }
