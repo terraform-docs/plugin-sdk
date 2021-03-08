@@ -13,6 +13,7 @@ package terraform
 // Resource represents a managed or data type that is created by the module
 type Resource struct {
 	Type           string
+	Name           string
 	ProviderName   string
 	ProviderSource string
 	Mode           string
