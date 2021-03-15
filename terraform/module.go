@@ -35,7 +35,7 @@ type Module interface {
 	HasHeader() bool
 
 	// HasFooter indicates if the module has footer.
-	// HasFooter() bool
+	HasFooter() bool
 
 	// HasInputs indicates if the module has inputs.
 	HasInputs() bool

@@ -48,17 +48,17 @@ type Settings struct {
 	// scope: Asciidoc, Markdown
 	ShowDefault bool
 
-	// ShowHeader show "Header" module information
-	//
-	// default: true
-	// scope: Global
-	ShowHeader bool
-
 	// ShowFooter show "footer" module information
 	//
 	// default: false
 	// scope: Global
 	ShowFooter bool
+
+	// ShowHeader show "Header" module information
+	//
+	// default: true
+	// scope: Global
+	ShowHeader bool
 
 	// ShowInputs show "Inputs" information
 	//
