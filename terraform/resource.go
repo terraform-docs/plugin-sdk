@@ -18,4 +18,5 @@ type Resource struct {
 	ProviderSource string
 	Mode           string
 	Version        string
+	Position       Position
 }
