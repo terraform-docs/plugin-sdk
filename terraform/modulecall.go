@@ -18,7 +18,8 @@ package terraform
 
 // ModuleCall represents a submodule called by Terraform module.
 type ModuleCall struct {
-	Name    string
-	Source  string
-	Version string
+	Name     string
+	Source   string
+	Version  string
+	Position Position
 }
