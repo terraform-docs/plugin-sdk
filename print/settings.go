@@ -42,6 +42,12 @@ type Settings struct {
 	// scope: Pretty
 	ShowColor bool
 
+	// ShowDataSources shows the data sources in the "Resources" section
+	//
+	// default: true
+	// scope: Global
+	ShowDataSources bool
+
 	// ShowDefault show "Default" column
 	//
 	// default: true
