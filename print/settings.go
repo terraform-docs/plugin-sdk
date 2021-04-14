@@ -54,6 +54,12 @@ type Settings struct {
 	// scope: Asciidoc, Markdown
 	ShowDefault bool
 
+	// ShowDescription show "Descriptions" as comment on variables
+	//
+	// default: false
+	// scope: tfvars hcl
+	ShowDescription bool
+
 	// ShowFooter show "footer" module information
 	//
 	// default: false
