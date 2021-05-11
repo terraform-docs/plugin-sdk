@@ -81,33 +81,54 @@ func (t *Template) applyCustomFunc() {
 }
 
 // Render template with given Module struct.
-func (t *Template) Render(module terraform.Module) (string, error) {
+func (t *Template) Render(name string, module terraform.Module) (string, error) {
 	if len(t.items) < 1 {
 		return "", fmt.Errorf("base template not found")
 	}
-	var buffer bytes.Buffer
-	tmpl := gotemplate.New(t.items[0].Name)
-	tmpl.Funcs(t.funcMap)
-	gotemplate.Must(tmpl.Parse(normalize(t.items[0].Text)))
-	for i, item := range t.items {
-		if i == 0 {
-			continue
-		}
-		tt := tmpl.New(item.Name)
-		tt.Funcs(t.funcMap)
-		gotemplate.Must(tt.Parse(normalize(item.Text)))
+
+	item := t.findByName(name)
+	if item == nil {
+		return "", fmt.Errorf("%s template not found", name)
 	}
-	err := tmpl.ExecuteTemplate(&buffer, t.items[0].Name, struct {
+
+	var buffer bytes.Buffer
+
+	tmpl := gotemplate.New(item.Name)
+	tmpl.Funcs(t.funcMap)
+	gotemplate.Must(tmpl.Parse(normalize(item.Text)))
+
+	for _, ii := range t.items {
+		tt := tmpl.New(ii.Name)
+		tt.Funcs(t.funcMap)
+		gotemplate.Must(tt.Parse(normalize(ii.Text)))
+	}
+
+	if err := tmpl.ExecuteTemplate(&buffer, item.Name, struct {
 		Module   terraform.Module
 		Settings *print.Settings
 	}{
 		Module:   module,
 		Settings: t.settings,
-	})
-	if err != nil {
+	}); err != nil {
 		return "", err
 	}
+
 	return buffer.String(), nil
+}
+
+func (t *Template) findByName(name string) *Item {
+	if name == "" {
+		if len(t.items) > 0 {
+			return t.items[0]
+		}
+		return nil
+	}
+	for _, i := range t.items {
+		if i.Name == name {
+			return i
+		}
+	}
+	return nil
 }
 
 func builtinFuncs(settings *print.Settings) gotemplate.FuncMap { // nolint:gocyclo
