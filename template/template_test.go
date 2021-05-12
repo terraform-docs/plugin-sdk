@@ -71,7 +71,7 @@ func TestTemplateRender(t *testing.T) {
 			settings := &print.Settings{}
 			tpl := New(settings, tt.items...)
 			tpl.CustomFunc(customFuncs)
-			rendered, err := tpl.Render(module)
+			rendered, err := tpl.Render("", module)
 			if tt.wantErr {
 				assert.NotNil(err)
 			} else {
