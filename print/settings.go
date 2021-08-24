@@ -24,6 +24,12 @@ type Settings struct {
 	// scope: Markdown
 	EscapeCharacters bool
 
+	// HideEmpty hide empty sections
+	//
+	// default: false
+	// scope: Global
+	HideEmpty bool
+
 	// IndentLevel control the indentation of headers [available: 1, 2, 3, 4, 5]
 	//
 	// default: 2
